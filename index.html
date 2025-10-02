@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Study Planner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Smart Study Planner</h1>
+            <p class="subtitle">Organize your studies, achieve your goals</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-btn active" data-tab="tasks">Tasks</button>
+            <button class="tab-btn" data-tab="timeline">Timeline</button>
+            <button class="tab-btn" data-tab="goals">Goals</button>
+        </nav>
+
+        <div id="tasks" class="tab-content active">
+            <div class="controls">
+                <button class="btn btn-primary" id="addTaskBtn">+ Add Task</button>
+                <div class="filter-controls">
+                    <select id="filterSubject">
+                        <option value="all">All Subjects</option>
+                    </select>
+                    <select id="sortBy">
+                        <option value="date">Sort by Date</option>
+                        <option value="priority">Sort by Priority</option>
+                        <option value="subject">Sort by Subject</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="tasksList" class="tasks-list"></div>
+        </div>
+
+        <div id="timeline" class="tab-content">
+            <div class="timeline-view">
+                <h2>Upcoming Deadlines</h2>
+                <div id="timelineContent" class="timeline-content"></div>
+            </div>
+        </div>
+
+        <div id="goals" class="tab-content">
+            <div class="controls">
+                <button class="btn btn-primary" id="addGoalBtn">+ Add Goal</button>
+            </div>
+            <div id="goalsList" class="goals-list"></div>
+        </div>
+    </div>
+
+    <div id="taskModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Add Task</h2>
+            <form id="taskForm">
+                <div class="form-group">
+                    <label for="taskTitle">Task Title *</label>
+                    <input type="text" id="taskTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="taskSubject">Subject *</label>
+                    <input type="text" id="taskSubject" required>
+                </div>
+                <div class="form-group">
+                    <label for="taskDescription">Description</label>
+                    <textarea id="taskDescription" rows="3"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="taskDueDate">Due Date *</label>
+                        <input type="date" id="taskDueDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskPriority">Priority *</label>
+                        <select id="taskPriority" required>
+                            <option value="low">Low</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelTaskBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="goalModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="goalModalTitle">Add Study Goal</h2>
+            <form id="goalForm">
+                <div class="form-group">
+                    <label for="goalTitle">Goal Title *</label>
+                    <input type="text" id="goalTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="goalDescription">Description</label>
+                    <textarea id="goalDescription" rows="3"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="goalTarget">Target Value *</label>
+                        <input type="number" id="goalTarget" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="goalCurrent">Current Progress</label>
+                        <input type="number" id="goalCurrent" min="0" value="0">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="goalDeadline">Deadline</label>
+                    <input type="date" id="goalDeadline">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelGoalBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Goal</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
